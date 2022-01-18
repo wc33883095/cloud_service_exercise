@@ -1,19 +1,31 @@
-plugins {
-    id 'java'
-}
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.aliyun.com/nexus/content/repositories/central/"
+        }
+        maven {
+            allowInsecureProtocol = true
+            url "http://mvnrepository.com/"
+        }
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.oschina.net/content/groups/public/"
+        }
+        maven {
+            allowInsecureProtocol = true
+            url "https://mirrors.huaweicloud.com/repository/maven/"
+        }
+    }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+    apply plugin: "java"
+    apply plugin: "idea"
 
-repositories {
-    mavenCentral()
-}
+    sourceCompatibility = 1.17
+    targetCompatibility = 1.17
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
 }

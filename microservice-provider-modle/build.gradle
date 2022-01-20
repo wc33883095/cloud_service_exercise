@@ -1,0 +1,9 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = 'com.cloud.abc.ProviderApplication'

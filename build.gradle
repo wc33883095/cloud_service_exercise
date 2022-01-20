@@ -1,4 +1,7 @@
 allprojects {
+    group 'com.cloud.abc'
+    version '1.0.0-SNAPSHOT'
+
     repositories {
         mavenCentral()
         maven {
@@ -21,11 +24,28 @@ allprojects {
 
     apply plugin: "java"
     apply plugin: "idea"
+    apply plugin: "application"
 
-    sourceCompatibility = 1.17
-    targetCompatibility = 1.17
+    applicationDefaultJvmArgs = ['-Dsun.java2d.metal=true',
+                                 '--add-opens=java.base/java.lang=ALL-UNNAMED',
+                                 '--add-opens=java.base/java.util=ALL-UNNAMED',
+                                 '--add-opens=java.base/java.math=ALL-UNNAMED',
+                                 '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED',
+                                 '--add-opens=java.base/java.text=ALL-UNNAMED',
+                                 '--add-opens=java.desktop/java.awt.font=ALL-UNNAMED',]
+
+    sourceCompatibility = 17
+    targetCompatibility = 17
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
+    }
+
+    dependencies {
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.21.RELEASE'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.5.21.RELEASE'
+        implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+        implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.1.2'
+        implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '3.0.2'
     }
 }

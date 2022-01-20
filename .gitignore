@@ -1,2 +1,4 @@
 .idea
 .gradle
+.gitignore
+microservice-discoery-eureka/build

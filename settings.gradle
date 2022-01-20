@@ -1,2 +1,3 @@
 rootProject.name = 'cloud_service'
+include 'microservice-discoery-eureka'
 

@@ -5,9 +5,3 @@ plugins {
 repositories {
     mavenCentral()
 }
-
-mainClassName = 'com.cloud.abc.EurekaApplication'
-
-dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.4.7.RELEASE'
-}

@@ -1,5 +1,23 @@
 spring:
   application:
     name: provider
+  profiles:
+    active: provider0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://pper1:8761/eureka/,http://peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
 
+---
+server:
+  port: 8088
+spring:
+  profiles: provider0
 
+---
+server:
+  port: 8089
+spring:
+  profiles: provider1
